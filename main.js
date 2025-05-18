@@ -24,6 +24,7 @@ const alienCodeTranslator = (input) => {
   for (let i = 0; i < listAlienNumbers.length; i++) {
     const current = listAlienNumbers[i];
     const next = listAlienNumbers[i + 1] || 0;
+    const nextNext = listAlienNumbers[i + 2] || 0;
 
     // Check for duplicates
     if (current === next) {
@@ -46,7 +47,13 @@ const alienCodeTranslator = (input) => {
       ) {
         throw new Error(`Rule error`);
       }
+      if (nextNext > 0 && nextNext >= current) {
+        throw new Error(`No addition after subtraction`);
+      }
     } else {
+      if (next < nextNext && current < nextNext) {
+        throw new Error(`No double subtraction`);
+      }
       listExtraAlienNumbers.push(`${extract}`);
       listExtraAlienNumbersCal.push(extract.reduce((a, b) => -a + b, 0));
       extract = [];
@@ -54,13 +61,6 @@ const alienCodeTranslator = (input) => {
   }
   console.log(listExtraAlienNumbers);
   console.log(listExtraAlienNumbersCal);
-
-  // validate largest to smallest
-  for (let i = 1; i < listExtraAlienNumbersCal.length; i++) {
-    if (listExtraAlienNumbersCal[i - 1] < listExtraAlienNumbersCal[i]) {
-      throw new Error(`Descending order error`);
-    }
-  }
 
   return listExtraAlienNumbersCal.reduce((a, b) => a + b, 0);
 };

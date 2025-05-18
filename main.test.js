@@ -101,8 +101,9 @@ describe("alienCodeTranslator", () => {
 
   test("subtrack and plus", () => {
     const input = "aba";
-    const result = alienCodeTranslator(input);
-    expect(result).toBe(5);
+    expect(() => alienCodeTranslator(input)).toThrow(
+      "No addition after subtraction"
+    );
   });
 
   test("lbaaa", () => {
@@ -129,23 +130,23 @@ describe("alienCodeTranslator", () => {
     expect(result).toBe(964);
   });
 
-  test("Descending order error", () => {
+  test("No double subtraction", () => {
     const input = "aab";
-    expect(() => alienCodeTranslator(input)).toThrow("Descending order error");
+    expect(() => alienCodeTranslator(input)).toThrow("No double subtraction");
   });
 
-  test("Descending order error", () => {
+  test("No double subtraction", () => {
     const input = "ccr";
-    expect(() => alienCodeTranslator(input)).toThrow("Descending order error");
+    expect(() => alienCodeTranslator(input)).toThrow("No double subtraction");
   });
 
-  test("Descending order error", () => {
+  test("No double subtraction", () => {
     const input = "aaab";
-    expect(() => alienCodeTranslator(input)).toThrow("Descending order error");
+    expect(() => alienCodeTranslator(input)).toThrow("No double subtraction");
   });
 
-  test("Descending order error", () => {
-    const input = "ccrrr";
-    expect(() => alienCodeTranslator(input)).toThrow("Descending order error");
+  test("No double subtraction", () => {
+    const input = "ccr";
+    expect(() => alienCodeTranslator(input)).toThrow("No double subtraction");
   });
 });

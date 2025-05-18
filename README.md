@@ -18,6 +18,7 @@ This project provides a translator for a fictional alien numeral system. It conv
    ```
 
 2. Install dependencies:
+
    ```bash
    pnpm install
    ```
