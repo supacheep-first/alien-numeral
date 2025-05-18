@@ -13,7 +13,7 @@ This project provides a translator for a fictional alien numeral system. It conv
 1. Clone the repository:
 
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/supacheep-first/alien-numeral.git
    cd alien-numeral
    ```
 
